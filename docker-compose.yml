@@ -12,7 +12,6 @@ services:
     volumes:
       - "./sampleapp/:/var/www/html"
       - "./docker/apache-php/apache.conf:/etc/httpd/conf/httpd.conf"
-    container_name: "apache-php"
   db:
     container_name: laravel_db_sample
     build:
@@ -20,4 +19,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: laravel_db
-    container_name: "mysql5.6"
