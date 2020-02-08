@@ -1,0 +1,23 @@
+version: "3"
+services:
+  web:
+    container_name: laravel_app_sample
+    build:
+      context: ./docker/apache-php
+    ports: 
+      - 80:80
+    privileged: true
+    links:
+      - db    
+    volumes:
+      - "./sampleapp/:/var/www/html"
+      - "./docker/apache-php/apache.conf:/etc/httpd/conf/httpd.conf"
+    container_name: "apache-php"
+  db:
+    container_name: laravel_db_sample
+    build:
+      context: ./docker/db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel_db
+    container_name: "mysql5.6"
